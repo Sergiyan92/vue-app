@@ -1,17 +1,21 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <div>
+      <ButtonClick label="Основна кнопка" primary />
+      <ButtonClick label="Допоміжна кнопка" secondary />
+    </div>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ButtonClick from "@/components/ButtonClick.vue";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    ButtonClick,
+  },
+};
 </script>
 
 <style>
