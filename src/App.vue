@@ -4,16 +4,18 @@
     <div>
       <ButtonClick label="Основна кнопка" primary />
       <ButtonClick label="Допоміжна кнопка" secondary />
+      <Title />
     </div>
   </div>
 </template>
 
 <script>
 import ButtonClick from "@/components/ButtonClick.vue";
-
+import Title from "@/components/TitleComponent.vue";
 export default {
   components: {
     ButtonClick,
+    Title,
   },
 };
 </script>
