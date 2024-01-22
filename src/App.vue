@@ -2,14 +2,17 @@
   <div id="app">
     <h1>{{ title }}</h1>
     <Botton @click="increment">Click me</Botton>
+    <DirectivesTest />
   </div>
 </template>
 
 <script>
 import Botton from "@/components/ButtonClick.vue";
+import DirectivesTest from "@/components/DirectivesTest.vue";
 export default {
   components: {
     Botton,
+    DirectivesTest,
   },
   data() {
     return {
