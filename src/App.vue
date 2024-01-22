@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Botton>Click me</Botton>
+    <h1>{{ title }}</h1>
+    <Botton @click="increment">Click me</Botton>
   </div>
 </template>
 
@@ -9,6 +10,21 @@ import Botton from "@/components/ButtonClick.vue";
 export default {
   components: {
     Botton,
+  },
+  data() {
+    return {
+      amountofClicks: 0,
+    };
+  },
+  computed: {
+    title() {
+      return `Amoun of clicks ${this.amountofClicks}`;
+    },
+  },
+  methods: {
+    increment() {
+      this.amountofClicks += 1;
+    },
   },
 };
 </script>
