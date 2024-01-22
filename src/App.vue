@@ -1,21 +1,14 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <div>
-      <ButtonClick label="Основна кнопка" primary />
-      <ButtonClick label="Допоміжна кнопка" secondary />
-      <Title />
-    </div>
+    <Botton>Click me</Botton>
   </div>
 </template>
 
 <script>
-import ButtonClick from "@/components/ButtonClick.vue";
-import Title from "@/components/TitleComponent.vue";
+import Botton from "@/components/ButtonClick.vue";
 export default {
   components: {
-    ButtonClick,
-    Title,
+    Botton,
   },
 };
 </script>

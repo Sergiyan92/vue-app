@@ -1,56 +1,17 @@
 <template>
-  <button @click="handleClick" :class="buttonClass">
-    {{ label }}
-  </button>
+  <button v-bind:type="type"><slot></slot></button>
 </template>
 
 <script>
 export default {
+  name: "ButtonClick",
   props: {
-    label: {
+    type: {
       type: String,
-      default: "Натисни мене",
-    },
-    primary: {
-      type: Boolean,
-      default: false,
-    },
-    secondary: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  computed: {
-    buttonClass() {
-      return {
-        "primary-btn": this.primary,
-        "secondary-btn": this.secondary,
-      };
-    },
-  },
-  methods: {
-    handleClick() {
-      // Тут можна додати логіку для обробки кліку
-      console.log("Кнопка натиснута!");
+      default: "button",
     },
   },
 };
 </script>
 
-<style scoped>
-/* Додайте стилізацію кнопки тут */
-button {
-  padding: 10px 15px;
-  cursor: pointer;
-}
-
-.primary-btn {
-  background-color: #3498db;
-  color: #fff;
-}
-
-.secondary-btn {
-  background-color: #e74c3c;
-  color: #fff;
-}
-</style>
+<style lang="scss" scoped></style>
