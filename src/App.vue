@@ -1,38 +1,35 @@
 <template>
   <div id="app">
-    <h1>{{ title }}</h1>
-
-    <StarRaiting :rating="4.5" />
+    <ApartmentItem
+      :descr="apartments.descr"
+      :price="apartments.price"
+      :rating="apartments.rating"
+      imgsrc="https://fastly.picsum.photos/id/416/200/300.jpg?hmac=KIMUiPYQ0X2OQBuJIwtfL9ci1AGeu2OqrBH4GqpE7Bc"
+    />
   </div>
 </template>
 
 <script>
-import StarRaiting from "./components/StarRaiting.vue";
+import ApartmentItem from "./components/apartment/ApartmentItem";
 export default {
-  components: {
-    StarRaiting,
-  },
+  components: { ApartmentItem },
   data() {
     return {
-      amountofClicks: 0,
+      apartments: {
+        descr: "loren10",
+        price: 10,
+        rating: 4.5,
+        imgsrc:
+          "https://fastly.picsum.photos/id/416/200/300.jpg?hmac=KIMUiPYQ0X2OQBuJIwtfL9ci1AGeu2OqrBH4GqpE7Bc",
+      },
     };
-  },
-  computed: {
-    title() {
-      return `Amoun of clicks ${this.amountofClicks}`;
-    },
-  },
-  methods: {
-    increment() {
-      this.amountofClicks += 1;
-    },
   },
 };
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
