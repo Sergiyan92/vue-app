@@ -1,21 +1,18 @@
 <template>
   <div id="app">
-    <ApartmentItem
-      :descr="apartments.descr"
-      :price="apartments.price"
-      :rating="apartments.rating"
-      imgsrc="https://fastly.picsum.photos/id/416/200/300.jpg?hmac=KIMUiPYQ0X2OQBuJIwtfL9ci1AGeu2OqrBH4GqpE7Bc"
-    />
+    <ApartmentList :items="apartments" />
   </div>
 </template>
 
 <script>
-import ApartmentItem from "./components/apartment/ApartmentItem";
+import ApartmentList from "./components/apartment/ApartmentsList.vue";
+import apartments from "./components/apartment/apartments";
 export default {
-  components: { ApartmentItem },
+  components: { ApartmentList },
   data() {
     return {
-      apartments: {
+      apartments,
+      apartment: {
         descr: "loren10",
         price: 10,
         rating: 4.5,
