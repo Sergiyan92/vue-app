@@ -1,24 +1,27 @@
 <template>
   <div id="app">
-    <ApartmentList :items="apartments" />
+    <ApartmentList :items="apartments">
+      <template v-slot:apartment="{ apartment }">
+        <ApartmentsItem
+          :key="apartment.id"
+          :descr="apartment.descr"
+          :rating="apartment.rating"
+          :imgsrc="apartment.imgUrl"
+          :price="apartment.price"
+      /></template>
+    </ApartmentList>
   </div>
 </template>
 
 <script>
+import ApartmentsItem from "./components/apartment/ApartmentItem.vue";
 import ApartmentList from "./components/apartment/ApartmentsList.vue";
 import apartments from "./components/apartment/apartments";
 export default {
-  components: { ApartmentList },
+  components: { ApartmentList, ApartmentsItem },
   data() {
     return {
       apartments,
-      apartment: {
-        descr: "loren10",
-        price: 10,
-        rating: 4.5,
-        imgsrc:
-          "https://fastly.picsum.photos/id/416/200/300.jpg?hmac=KIMUiPYQ0X2OQBuJIwtfL9ci1AGeu2OqrBH4GqpE7Bc",
-      },
     };
   },
 };
