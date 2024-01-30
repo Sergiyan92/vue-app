@@ -1,5 +1,5 @@
 <template>
-  <div class="apartments-item">
+  <div class="apartments-item" @click="log(2, $event)">
     <div class="apartments-item__inner">
       <img :src="imgsrc" alt="" class="apartments-item__photo" />
       <div class="apartments-item__content">
@@ -10,6 +10,9 @@
           <StarRaiting :rating="rating" />
         </div>
         <div class="apartments-item__price">UAH {{ price }}</div>
+        <a href="https://facebook.com" @click.prevent.stop="handleLinkClick"
+          >facebook</a
+        >
       </div>
     </div>
   </div>
@@ -40,13 +43,22 @@ export default {
       default: "",
     },
   },
+  methods: {
+    log(index, event) {
+      console.log(event);
+      console.log(index);
+    },
+    handleLinkClick() {
+      console.log("facebook click");
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .apartments-item {
   position: relative;
-  width: 33.333%;
+  width: 30%;
   padding: 0 15px;
   margin-bottom: 30px;
 
