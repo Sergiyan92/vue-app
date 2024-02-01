@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <h2>{{ text }}</h2>
-    <CustomSelect :items="['name', 'label', 'salary', 'male', 'famale']" />
-    <CustomInput v-model="text" />
+    <ContainerView>
+      <ApartmentFilterForm class="apartment-filter" @submit="logger" />
+    </ContainerView>
     <ApartmentList :items="apartments">
       <template v-slot:apartment="{ apartment }">
         <ApartmentsItem
@@ -17,23 +18,33 @@
 </template>
 
 <script>
-import CustomInput from "./components/shared/CustomInput.vue";
-import CustomSelect from "./components/shared/CustomSelect.vue";
 import ApartmentsItem from "./components/apartment/ApartmentItem.vue";
 import ApartmentList from "./components/apartment/ApartmentsList.vue";
+import ApartmentFilterForm from "./components/apartment/ApartmentFilterForm.vue";
+import ContainerView from "./components/shared/ContainerView.vue";
 import apartments from "./components/apartment/apartments";
 export default {
-  components: { ApartmentList, ApartmentsItem, CustomInput, CustomSelect },
+  components: {
+    ApartmentList,
+    ApartmentsItem,
+    ContainerView,
+    ApartmentFilterForm,
+  },
   data() {
     return {
       text: "",
       apartments,
     };
   },
+  methods: {
+    logger(value) {
+      console.log(value, "---form value");
+    },
+  },
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 #app {
   font-family: Montserrat, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -41,5 +52,11 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.actions {
+  display: flex;
+}
+.apartment-filter {
+  margin-bottom: 40px;
 }
 </style>
