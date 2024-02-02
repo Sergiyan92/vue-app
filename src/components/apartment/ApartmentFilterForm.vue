@@ -1,18 +1,28 @@
 <template>
   <form class="form" @submit.prevent="handleSubmit">
-    <CustomSelect :items="cities" class="form__select" v-model="city" />
-    <CustomInput v-model="price" placeholder="Min price" />
-    <SubmitButton class="form__submit" type="submit">Підбір</SubmitButton>
+    <CustomSelect :items="cities" v-model="city" class="form__select" />
+    <CustomInput
+      v-model="price"
+      placeholder="Цена, от"
+      error-message="Не должно быть пустым"
+    />
+    <SubmitButton class="form__submit" type="submit">
+      Подбор жилья
+    </SubmitButton>
   </form>
 </template>
 
 <script>
-import CustomSelect from "../shared/CustomSelect.vue";
-import CustomInput from "../shared/CustomInput.vue";
+import CustomSelect from "../shared/CustomSelect";
+import CustomInput from "../shared/CustomInput";
 import SubmitButton from "../shared/ButtonClick.vue";
+
 export default {
-  name: "ApartmentFilterForm",
-  components: { CustomSelect, CustomInput, SubmitButton },
+  components: {
+    CustomSelect,
+    CustomInput,
+    SubmitButton,
+  },
   data() {
     return {
       price: "",
@@ -22,7 +32,7 @@ export default {
   computed: {
     cities() {
       return [
-        { value: "", label: "City", selected: true },
+        { value: "", label: "Город", selected: true },
         "Kyiv",
         "Odesa",
         "Poltava",
@@ -36,7 +46,12 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$emit("submit", { city: this.city, price: this.price });
+      const numericPrice = parseFloat(this.price);
+
+      this.$emit("submit", {
+        city: this.city,
+        price: isNaN(numericPrice) ? "" : numericPrice,
+      });
     },
   },
 };
