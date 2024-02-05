@@ -10,9 +10,10 @@
           <StarRaiting :rating="rating" />
         </div>
         <div class="apartments-item__price">UAH {{ price }}</div>
-        <a href="https://facebook.com" @click.prevent.stop="handleLinkClick"
-          >facebook</a
-        >
+        <router-link
+          :to="{ name: 'apartment' }"
+          class="apartments-item__link"
+        ></router-link>
       </div>
     </div>
   </div>
