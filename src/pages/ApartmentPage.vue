@@ -9,6 +9,11 @@ import ContainerView from "../components/shared/ContainerView.vue";
 export default {
   name: "ApartmentPage",
   components: { ContainerView },
+  mounted() {
+    // this.$router;
+
+    console.log(this.$route.params.id);
+  },
 };
 </script>
 
