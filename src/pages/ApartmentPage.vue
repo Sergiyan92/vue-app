@@ -3,10 +3,13 @@
     <ContainerView>
       <div class="apartment-page__content">
         <ApartmentsMainIfo :apartment="apartment" />
-        <ApartmentsOwner
-          class="apartment-page__owner"
-          :owner="apartment.owner"
-        />
+        <div class="apartment-page__additional-info">
+          <ApartmentsOwner
+            class="apartment-page__owner"
+            :owner="apartment.owner"
+          />
+          <Reviews :reviews="reviewsList" />
+        </div>
       </div>
     </ContainerView>
   </main>
@@ -16,16 +19,24 @@
 import ContainerView from "../components/shared/ContainerView.vue";
 import ApartmentsMainIfo from "@/components/apartment/ApartmentsMainIfo.vue";
 import ApartmentsOwner from "@/components/apartment/ApartmentsOwner.vue";
+import Reviews from "../components/reviews";
+import reviewsList from "../components/reviews/reviews.json";
 import apartments from "../components/apartment/apartments";
+
 export default {
   name: "ApartmentPage",
-  components: { ContainerView, ApartmentsMainIfo, ApartmentsOwner },
+  components: { ContainerView, ApartmentsMainIfo, ApartmentsOwner, Reviews },
   computed: {
     apartment() {
       return apartments.find(
         (apartment) => apartment.id === this.$route.params.id
       );
     },
+  },
+  data() {
+    return {
+      reviewsList,
+    };
   },
   mounted() {
     console.log(this.apartment);
