@@ -1,20 +1,49 @@
 <template>
-  <ContainerView>
-    <h1>Apartment Page</h1>
-  </ContainerView>
+  <main class="apartment-page">
+    <ContainerView>
+      <div class="apartment-page__content">
+        <ApartmentsMainIfo :apartment="apartment" />
+        <ApartmentsOwner
+          class="apartment-page__owner"
+          :owner="apartment.owner"
+        />
+      </div>
+    </ContainerView>
+  </main>
 </template>
 
 <script>
 import ContainerView from "../components/shared/ContainerView.vue";
+import ApartmentsMainIfo from "@/components/apartment/ApartmentsMainIfo.vue";
+import ApartmentsOwner from "@/components/apartment/ApartmentsOwner.vue";
+import apartments from "../components/apartment/apartments";
 export default {
   name: "ApartmentPage",
-  components: { ContainerView },
+  components: { ContainerView, ApartmentsMainIfo, ApartmentsOwner },
+  computed: {
+    apartment() {
+      return apartments.find(
+        (apartment) => apartment.id === this.$route.params.id
+      );
+    },
+  },
   mounted() {
-    // this.$router;
-
-    console.log(this.$route.params.id);
+    console.log(this.apartment);
   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.apartment-page {
+  padding-bottom: 55px;
+
+  &__content {
+    display: flex;
+    align-items: flex-start;
+  }
+  &__owner {
+    min-width: 350px;
+    margin-left: 30px;
+  }
+}
+</style>
