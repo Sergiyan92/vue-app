@@ -1,6 +1,8 @@
 <template>
   <header class="header">
-    <ContainerView><Logo /></ContainerView>
+    <ContainerView>
+      <router-link to="/"> <Logo /></router-link>
+    </ContainerView>
   </header>
 </template>
 
