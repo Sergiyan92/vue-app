@@ -5,6 +5,7 @@
       v-model="price"
       placeholder="Цена, от"
       error-message="Не должно быть пустым"
+      :rules="rules"
     />
     <SubmitButton class="form__submit" type="submit">
       Подбор жилья
@@ -13,6 +14,7 @@
 </template>
 
 <script>
+import { isRequired, charLimit } from "@/utils/validationRules";
 import CustomSelect from "../shared/CustomSelect";
 import CustomInput from "../shared/CustomInput";
 import SubmitButton from "../shared/ButtonClick.vue";
@@ -30,6 +32,9 @@ export default {
     };
   },
   computed: {
+    rules() {
+      return [isRequired, charLimit(10)];
+    },
     cities() {
       return [
         { value: "", label: "Город", selected: true },
