@@ -28,17 +28,17 @@ export default {
       default: () => [],
     },
   },
+  inject: ["form"],
   data() {
     return {
       error: "",
       isValid: true,
-      inputValue: "",
+      inputValue: null,
     };
   },
   watch: {
-    value(value) {
-      this.validate(value);
-      console.log(value);
+    value() {
+      this.validate();
     },
   },
   methods: {
@@ -52,6 +52,17 @@ export default {
         return hasPass;
       });
     },
+    reset() {
+      this.$emit("input", "");
+    },
+  },
+  mounted() {
+    if (!this.form) return;
+    this.form.registerInput(this);
+  },
+  beforeUnmount() {
+    if (!this.form) return;
+    this.form.unregisterInput(this);
   },
 };
 </script>
