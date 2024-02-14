@@ -28,7 +28,11 @@ export default {
       default: () => [],
     },
   },
-  inject: ["form"],
+  inject: {
+    form: {
+      default: null,
+    },
+  },
   data() {
     return {
       error: "",
@@ -77,13 +81,13 @@ export default {
 
 .custom-input {
   height: 40px;
-  max-width: 220px;
-  width: 100%;
+  width: 350px;
   border: 2px solid $main-color;
   font-size: 18px;
   outline: none;
   line-height: inherit;
   padding: 8px 15px;
+  margin-bottom: 20px;
 
   &::placeholder {
     color: inherit;

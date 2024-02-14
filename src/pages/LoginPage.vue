@@ -1,12 +1,16 @@
 <template>
-  <main class="login"><LoginForm /></main>
+  <main class="login">
+    <AuthSection> <LoginForm /> </AuthSection>
+  </main>
 </template>
 
 <script>
-import LoginForm from "../components/login";
+import LoginForm from "../components/auth/login";
+import AuthSection from "../components/auth/AuthSection";
+
 export default {
   name: "LoginPage",
-  components: { LoginForm },
+  components: { LoginForm, AuthSection },
 };
 </script>
 

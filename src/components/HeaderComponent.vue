@@ -24,5 +24,6 @@ export default {
   width: 100%;
   padding: 16px 0;
   background: $secondary-color;
+  z-index: 100;
 }
 </style>
