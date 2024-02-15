@@ -1,11 +1,11 @@
 export const isRequired = (val) => ({
-  hasPass: !!val,
-  message: "Please enter value",
+  hasPassed: !!val,
+  message: "Пожалуйста заполните это поле",
 });
 
 export const charLimit = (limit) => (val) => ({
-  hasPass: val.length <= limit,
-  message: "Enter less value",
+  hasPassed: val.length <= limit,
+  message: "Вы превысели лимит",
 });
 
 export const emailValidation = (val) => ({
