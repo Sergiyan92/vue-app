@@ -36,7 +36,9 @@
         :rules="confirmPassword"
         class="registration__input"
       />
-      <ButtonClick class="registration__btn" type="submit">Enter</ButtonClick>
+      <ButtonClick class="registration__btn" type="submit" :loading="loading">
+        Enter</ButtonClick
+      >
     </Form>
   </AuthFormContainer>
 </template>
@@ -64,6 +66,7 @@ export default {
   },
   data() {
     return {
+      loading: false,
       formData: {
         name: "",
         email: "",
@@ -78,11 +81,14 @@ export default {
       const isFormValid = form.validate();
       const { name, password, email } = this.formData;
       try {
+        this.loading = true;
         const { data } = await registerUser({ name, password, email });
         console.log(data);
         form.reset();
       } catch (error) {
         console.error(error);
+      } finally {
+        this.loading = false;
       }
 
       if (isFormValid) {
