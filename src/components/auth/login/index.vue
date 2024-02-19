@@ -32,7 +32,7 @@ import CustomInput from "../../shared/CustomInput";
 import ButtonClick from "../../shared/ButtonClick";
 import AuthFormContainer from "@/components/auth/AuthFormContainer";
 import MainTitle from "../../shared/MainTitle";
-import { loginUser } from "../../../services/auth.services.js";
+
 import {
   emailValidation,
   passwordValidation,
@@ -62,8 +62,11 @@ export default {
       const isFormValid = form.validate();
       try {
         this.loading = true;
-        const { data } = await loginUser(this.formData);
-        console.log(data);
+
+        await this.$store.dispatch("login", this.formData);
+
+        this.$router.push({ name: "home" });
+        form.reset();
       } catch (error) {
         this.$notify({
           type: "error",

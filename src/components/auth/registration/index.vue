@@ -49,7 +49,7 @@ import CustomInput from "../../shared/CustomInput";
 import ButtonClick from "../../shared/ButtonClick";
 import AuthFormContainer from "@/components/auth/AuthFormContainer";
 import MainTitle from "../../shared/MainTitle";
-import { registerUser } from "../../../services/auth.services.js";
+
 import {
   emailValidation,
   passwordValidation,
@@ -82,8 +82,11 @@ export default {
       const { name, password, email } = this.formData;
       try {
         this.loading = true;
-        const { data } = await registerUser({ name, password, email });
-        console.log(data);
+
+        await this.$store.dispatch("registration", { name, password, email });
+
+        this.$router.push({ name: "home" });
+        console.log(this.$store.state);
         form.reset();
       } catch (error) {
         this.$notify({

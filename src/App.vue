@@ -5,6 +5,7 @@
       <HeaderComponent />
       <router-view></router-view>
     </div>
+
     <FooterComponent />
   </div>
 </template>
@@ -19,6 +20,7 @@ export default {
     HeaderComponent,
     Notifications,
   },
+  mounted() {},
 };
 </script>
 
