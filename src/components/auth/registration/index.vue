@@ -44,6 +44,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import Form from "../../shared/form";
 import CustomInput from "../../shared/CustomInput";
 import ButtonClick from "../../shared/ButtonClick";
@@ -76,6 +77,7 @@ export default {
     };
   },
   methods: {
+    ...mapActions("auth", ["registerUser"]),
     async handleSubmit() {
       const { form } = this.$refs;
       const isFormValid = form.validate();
@@ -83,7 +85,11 @@ export default {
       try {
         this.loading = true;
 
-        await this.$store.dispatch("registration", { name, password, email });
+        await this.registerUser({
+          name,
+          password,
+          email,
+        });
 
         this.$router.push({ name: "home" });
         console.log(this.$store.state);
