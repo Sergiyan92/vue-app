@@ -20,7 +20,9 @@ export default {
     HeaderComponent,
     Notifications,
   },
-  mounted() {},
+  mounted() {
+    console.log(this.$store.getters["auth/isLoggedIn"]);
+  },
 };
 </script>
 
