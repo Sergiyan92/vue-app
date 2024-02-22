@@ -12,7 +12,7 @@
 
 <script>
 import FooterComponent from "./components/FooterComponent.vue";
-import HeaderComponent from "./components/HeaderComponent.vue";
+import HeaderComponent from "./components/header";
 import Notifications from "./components/notifications";
 export default {
   components: {
@@ -20,9 +20,7 @@ export default {
     HeaderComponent,
     Notifications,
   },
-  mounted() {
-    console.log(this.$store.getters["auth/isLoggedIn"]);
-  },
+  mounted() {},
 };
 </script>
 
