@@ -24,7 +24,9 @@
         >
       </li>
       <li class="account-actions__item">
-        <button @click="logout" class="account-actions__logout">LogOut</button>
+        <button @click="handleLogout" class="account-actions__logout">
+          LogOut
+        </button>
       </li>
     </ul>
   </div>
@@ -49,6 +51,22 @@ export default {
     },
     toogle() {
       this.isOpen = !this.isOpen;
+    },
+    async handleLogout() {
+      try {
+        await this.logout();
+        const { requiresAuth } = this.$route.meta;
+
+        if (requiresAuth) {
+          this.$router.push({ name: "login" });
+        }
+      } catch (error) {
+        this.$notify({
+          type: "error",
+          title: "Logout error",
+          text: error.message,
+        });
+      }
     },
   },
 };
