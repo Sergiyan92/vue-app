@@ -93,13 +93,12 @@ export default {
 
 .custom-input {
   height: 40px;
-  width: 350px;
+  width: 100%;
   border: 2px solid $main-color;
   font-size: 18px;
   outline: none;
   line-height: inherit;
   padding: 8px 15px;
-  margin-bottom: 20px;
 
   &::placeholder {
     color: inherit;

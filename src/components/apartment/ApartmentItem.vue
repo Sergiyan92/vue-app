@@ -1,5 +1,5 @@
 <template>
-  <div class="apartments-item" @click="log(2, $event)">
+  <div class="apartments-item">
     <div class="apartments-item__inner">
       <img :src="imgsrc" alt="" class="apartments-item__photo" />
       <div class="apartments-item__content">
@@ -46,15 +46,6 @@ export default {
     imgsrc: {
       type: String,
       default: "",
-    },
-  },
-  methods: {
-    log(index, event) {
-      console.log(event);
-      console.log(index);
-    },
-    handleLinkClick() {
-      console.log("facebook click");
     },
   },
 };

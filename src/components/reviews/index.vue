@@ -1,7 +1,7 @@
 <template>
   <section class="reviews">
     <div class="reviews__heading">
-      <h2 class="reviews__title">Сумарний рейтинг</h2>
+      <h2 class="reviews__title">Overall rating</h2>
       <div class="reviews__rating">
         <span>{{ amountOfReviews }} comments</span>
         <Rating :rating="totalRating" />

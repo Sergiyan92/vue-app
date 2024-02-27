@@ -9,6 +9,7 @@
         name="name"
         :rules="nameRules"
         class="registration__input"
+        style="width: 350px; margin-bottom: 23px"
       />
       <CustomInput
         v-model="formData.email"
@@ -17,6 +18,7 @@
         name="email"
         :rules="emailRules"
         class="registration__input"
+        style="width: 350px; margin-bottom: 23px"
       />
       <CustomInput
         v-model="formData.password"
@@ -26,6 +28,7 @@
         name="password"
         :rules="passwordRules"
         class="registration__input"
+        style="width: 350px; margin-bottom: 23px"
       />
       <CustomInput
         v-model="formData.confirmPassword"
@@ -35,6 +38,7 @@
         name="password"
         :rules="confirmPassword"
         class="registration__input"
+        style="width: 350px"
       />
       <ButtonClick class="registration__btn" type="submit" :loading="loading">
         Enter</ButtonClick
@@ -80,7 +84,7 @@ export default {
     ...mapActions("auth", ["registerUser"]),
     async handleSubmit() {
       const { form } = this.$refs;
-      const isFormValid = form.validate();
+
       const { name, password, email } = this.formData;
       try {
         this.loading = true;
@@ -92,7 +96,7 @@ export default {
         });
 
         this.$router.push({ name: "home" });
-        console.log(this.$store.state);
+
         form.reset();
       } catch (error) {
         this.$notify({
@@ -102,10 +106,6 @@ export default {
         });
       } finally {
         this.loading = false;
-      }
-
-      if (isFormValid) {
-        console.log(this.formData);
       }
     },
   },

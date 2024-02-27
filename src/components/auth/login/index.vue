@@ -9,6 +9,7 @@
         autocomplete="email"
         :rules="emailRules"
         class="login__input"
+        style="width: 350px; margin-bottom: 23px"
       />
       <CustomInput
         v-model="formData.password"
@@ -17,6 +18,7 @@
         autocomplete="current-password"
         type="password"
         :rules="passwordRules"
+        style="width: 350px"
         class="login__input"
       />
       <ButtonClick class="login__btn" type="submit" :loading="loading"
@@ -61,7 +63,7 @@ export default {
     ...mapActions("auth", ["loginUser"]),
     async handleSubmit() {
       const { form } = this.$refs;
-      const isFormValid = form.validate();
+
       try {
         this.loading = true;
 
@@ -77,10 +79,6 @@ export default {
         });
       } finally {
         this.loading = false;
-      }
-
-      if (isFormValid) {
-        console.log(this.formData);
       }
     },
   },

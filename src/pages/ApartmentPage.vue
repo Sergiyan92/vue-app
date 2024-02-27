@@ -47,11 +47,12 @@ export default {
       const { data } = await getApartmentsById(id);
       this.apartment = data;
     } catch (error) {
-      console.error(error);
+      this.$notify({
+        type: "error",
+        title: "Error",
+        text: error.message,
+      });
     }
-  },
-  mounted() {
-    console.log(this.apartment);
   },
 };
 </script>

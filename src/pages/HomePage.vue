@@ -58,7 +58,11 @@ export default {
       const { data } = await getApartmentsList();
       this.apartments = data;
     } catch (error) {
-      console.error(error);
+      this.$notify({
+        type: "error",
+        title: "Error",
+        text: error.message,
+      });
     }
   },
   methods: {
